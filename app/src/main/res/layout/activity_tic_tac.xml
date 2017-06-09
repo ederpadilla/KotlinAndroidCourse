@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context="eder.padilla.kotlinandroidcourse.tictactoegame.TicTacActivity">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/mButton1"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton2"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton3"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/mButton4"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton5"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton6"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/mButton7"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton8"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+
+        <Button
+            android:id="@+id/mButton9"
+            android:layout_width="40pt"
+            android:layout_height="40pt"
+            android:layout_marginRight="3pt"
+            android:onClick="ticTacToe" />
+    </TableRow>
+</TableLayout>
