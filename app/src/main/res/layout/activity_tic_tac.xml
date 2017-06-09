@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/darkblue"
     tools:context="eder.padilla.kotlinandroidcourse.tictactoegame.TicTacActivity">
 
     <TableRow
@@ -16,22 +17,33 @@
             android:id="@+id/mButton1"
             android:layout_width="40pt"
             android:layout_height="40pt"
-            android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:layout_margin="3pt"
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton2"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton3"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </TableRow>
 
     <TableRow
@@ -43,22 +55,34 @@
             android:id="@+id/mButton4"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton5"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton6"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </TableRow>
 
     <TableRow
@@ -70,21 +94,33 @@
             android:id="@+id/mButton7"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton8"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/mButton9"
             android:layout_width="40pt"
             android:layout_height="40pt"
+            android:layout_margin="3pt"
             android:layout_marginRight="3pt"
-            android:onClick="ticTacToe" />
+            android:onClick="ticTacToe"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold" />
     </TableRow>
 </TableLayout>

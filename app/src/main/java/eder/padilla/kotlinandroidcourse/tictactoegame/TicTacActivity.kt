@@ -8,6 +8,8 @@ import android.widget.Button
 import android.widget.Toast
 
 import eder.padilla.kotlinandroidcourse.R
+import kotlinx.android.synthetic.main.activity_tic_tac.*
+import java.util.*
 
 class TicTacActivity : AppCompatActivity() {
 
@@ -41,12 +43,13 @@ class TicTacActivity : AppCompatActivity() {
         buttonSelected.isEnabled=false
         if (activePlayer==1){
             buttonSelected.text = "x"
-            buttonSelected.setBackgroundColor(Color.BLUE)
+            buttonSelected.setBackgroundResource(R.color.orange)
             player1.add(cellId)
             activePlayer=2
+            autoPlay()
         }else{
             buttonSelected.text = "o"
-            buttonSelected.setBackgroundColor(Color.GREEN)
+            buttonSelected.setBackgroundResource(R.color.purple)
             player2.add(cellId)
             activePlayer=1
         }
@@ -120,5 +123,34 @@ class TicTacActivity : AppCompatActivity() {
                 Toast.makeText(this,"jugador 2 gano el juego",Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+
+    fun autoPlay(){
+        var emptyCells = ArrayList<Int>()
+        for (cellId in 1..9){
+            if (!(player1.contains(cellId)||player2.contains(cellId))){ //ninguno de los jugadores los tiene
+                emptyCells.add(cellId)
+            }
+        }
+        var r = Random()
+        val ranIndex = r.nextInt(emptyCells.size-0)+0
+        val cellId = emptyCells[ranIndex]
+        var buSelected : Button?
+        when(cellId){
+            1-> buSelected = mButton1
+            2-> buSelected = mButton2
+            3-> buSelected = mButton3
+            4-> buSelected = mButton4
+            5-> buSelected = mButton5
+            6-> buSelected = mButton6
+            7-> buSelected = mButton7
+            8-> buSelected = mButton8
+            9-> buSelected = mButton9
+            else->{
+                buSelected =mButton1
+            }
+        }
+        playGame(cellId,buSelected)
     }
 }
