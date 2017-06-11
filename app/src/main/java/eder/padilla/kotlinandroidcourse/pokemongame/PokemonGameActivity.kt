@@ -24,6 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 
 import eder.padilla.kotlinandroidcourse.R
 import eder.padilla.kotlinandroidcourse.Util
+import eder.padilla.kotlinandroidcourse.pokemongame.model.Pokemon
 
 import kotlinx.android.synthetic.main.activity_pokemon_game.*
 
@@ -35,6 +36,10 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
 
     private val LOCATION_REQUEST_CODE = 1
 
+    var oldLocation : Location? = null
+
+    var pokemonList = ArrayList<Pokemon>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pokemon_game)
@@ -42,8 +47,7 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
-        getPermission()
-        getUserLocation()
+        loadPokemon()
     }
 
     private fun getPermission() {
@@ -85,12 +89,15 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
         }
 
         mMap = googleMap
+
+        getPermission()
+        getUserLocation()
     }
 
     fun getUserLocation(){
         var myLocation = MyLocationListener()
         var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,3,3f,myLocation)
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,10000,3f,myLocation)
         var myThread = myThread()
         myThread.start()
     }
@@ -121,6 +128,13 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
 
         }
     }
+
+    fun loadPokemon(){
+        pokemonList.add(Pokemon("Charmander","char char",R.drawable.charmander,30.0,19.370585,-99.157695))
+        pokemonList.add(Pokemon("Bulbasaur","buuuulbasaaaur",R.drawable.bulbasaur,20.0,19.370585,-99.157695))
+        pokemonList.add(Pokemon("Squirtle","Squiiiiirtle",R.drawable.squirtle,33.0,19.368864,-99.157223))
+    }
+
     inner class MyLocationListener : LocationListener {
         constructor(){
             location= Location("Start")
@@ -149,10 +163,16 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
 
     inner class myThread : Thread {
         constructor():super(){
+            oldLocation = Location ("Start")
+            oldLocation!!.latitude=0.0
+            oldLocation!!.longitude=0.0
         }
-
         override fun run() {
             while (true){
+                if (oldLocation!!.distanceTo(location)==0f){
+                    continue
+                }
+                oldLocation = location
                 try {
                     runOnUiThread {
                         mMap!!.clear()
@@ -161,6 +181,20 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
                                 .snippet("Mario!!!")
                                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.mario)))
                         mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15f))
+
+                        //show pokemons
+                        var listSize = pokemonList.size-1
+                        for(i in 0..listSize){
+                            var newPokemon = pokemonList[i]
+                            if (newPokemon.isCatch==false){
+                                val pokemonLocation = LatLng(newPokemon.lat!!, newPokemon.long!!)
+                                mMap!!.addMarker(MarkerOptions().position(pokemonLocation).title(newPokemon.name!!)
+                                        .snippet(newPokemon.des!!)
+                                        .icon(BitmapDescriptorFactory.fromResource(newPokemon.image!!)))
+                                mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 15f))
+                            }
+                        }
+
                     }
                     Thread.sleep(1000)
                 }catch (e:Exception){
