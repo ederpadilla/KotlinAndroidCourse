@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Kotlin Android Course</string>
+    <string name="title_activity_pokemon_game">Map</string>
 </resources>
