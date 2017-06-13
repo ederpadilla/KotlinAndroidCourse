@@ -37,11 +37,6 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".pokemongame.PokemonGameActivity"
-            android:label="@string/title_activity_pokemon_game">
-
-        </activity>
-        <activity
             android:name=".pokemongame.PokemonGameTest"
             android:label="@string/title_activity_pokemon_game_test">
             <intent-filter>
