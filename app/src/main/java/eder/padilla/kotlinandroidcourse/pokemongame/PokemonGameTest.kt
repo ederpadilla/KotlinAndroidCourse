@@ -3,6 +3,7 @@ package eder.padilla.kotlinandroidcourse.pokemongame
 import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager
+import android.content.res.Resources
 import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
@@ -24,6 +25,10 @@ import com.google.android.gms.maps.model.MarkerOptions
 import eder.padilla.kotlinandroidcourse.R
 import eder.padilla.kotlinandroidcourse.Util
 import eder.padilla.kotlinandroidcourse.pokemongame.model.Pokemon
+import android.content.res.Resources.NotFoundException
+import com.google.android.gms.maps.model.MapStyleOptions
+
+
 
 class PokemonGameTest : FragmentActivity(), OnMapReadyCallback {
 
@@ -104,6 +109,17 @@ class PokemonGameTest : FragmentActivity(), OnMapReadyCallback {
      */
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
+        try {
+            // Customise the styling of the base map using a JSON object defined
+            // in a raw resource file.
+            val success = googleMap.setMapStyle(
+                    MapStyleOptions.loadRawResourceStyle(
+                            this, R.raw.aubergine_style_json))
+            if (!success) {
+            }
+        } catch (e: Resources.NotFoundException) {
+            Util.log("Can't find style. Error: " + e)
+        }
 
 
     }

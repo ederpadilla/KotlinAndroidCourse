@@ -39,6 +39,9 @@
         <activity
             android:name=".pokemongame.PokemonGameTest"
             android:label="@string/title_activity_pokemon_game_test">
+
+        </activity>
+        <activity android:name=".calculator.CalculatorActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
