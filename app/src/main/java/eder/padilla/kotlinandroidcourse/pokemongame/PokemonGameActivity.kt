@@ -26,10 +26,8 @@ import eder.padilla.kotlinandroidcourse.R
 import eder.padilla.kotlinandroidcourse.Util
 import eder.padilla.kotlinandroidcourse.pokemongame.model.Pokemon
 
-import kotlinx.android.synthetic.main.activity_pokemon_game.*
-
 class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
-
+    //WORK WITH USER LOCATION
     private var mMap: GoogleMap? = null
 
     var location : Location? = null
@@ -48,6 +46,8 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
                 .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
         loadPokemon()
+        getPermission()
+        getUserLocation()
     }
 
     private fun getPermission() {
@@ -90,16 +90,14 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
 
         mMap = googleMap
 
-        getPermission()
-        getUserLocation()
     }
 
     fun getUserLocation(){
-        var myLocation = MyLocationListener()
+        var myLocation = MyPersonalLocationListener()
         var locationManager = getSystemService(Context.LOCATION_SERVICE) as LocationManager
         locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,10000,3f,myLocation)
-        var myThread = myThread()
-        myThread.start()
+        //var myThread = myThread()
+        //myThread.start()
     }
 
 
@@ -120,7 +118,7 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
                     // for ActivityCompat#requestPermissions for more details.
                     return
                 }
-               // mMap!!.setMyLocationEnabled(true) Aqui ponemos lo que se realize cuando se tienen los permisos
+                // mMap!!.setMyLocationEnabled(true) Aqui ponemos lo que se realize cuando se tienen los permisos
 
             } else {
                 Toast.makeText(this, "Error de permisos", Toast.LENGTH_LONG).show()
@@ -130,13 +128,14 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
     }
 
     fun loadPokemon(){
-        pokemonList.add(Pokemon("Charmander","char char",R.drawable.charmander,30.0,19.370585,-99.157695))
-        pokemonList.add(Pokemon("Bulbasaur","buuuulbasaaaur",R.drawable.bulbasaur,20.0,19.370585,-99.157695))
-        pokemonList.add(Pokemon("Squirtle","Squiiiiirtle",R.drawable.squirtle,33.0,19.368864,-99.157223))
+        pokemonList.add(Pokemon(R.drawable.charmander,"Charmander","char char",30.0,19.370585,-99.157695))
+        pokemonList.add(Pokemon(R.drawable.bulbasaur,"Bulbasaur","buuuulbasaaaur",20.0,19.370585,-99.157695))
+        pokemonList.add(Pokemon(R.drawable.squirtle,"Squirtle","Squiiiiirtle",33.0,19.368864,-99.157223))
     }
 
-    inner class MyLocationListener : LocationListener {
+    open inner class MyPersonalLocationListener : LocationListener {
         constructor(){
+            Util.log("si entra a location listener")
             location= Location("Start")
             location!!.latitude=0.0
             location!!.longitude=0.0
@@ -148,15 +147,15 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
         }
 
         override fun onStatusChanged(provider: String?, status: Int, extras: Bundle?) {
-             //To change body of created functions use File | Settings | File Templates.
+            //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun onProviderEnabled(provider: String?) {
-             //To change body of created functions use File | Settings | File Templates.
+            //To change body of created functions use File | Settings | File Templates.
         }
 
         override fun onProviderDisabled(provider: String?) {
-             //To change body of created functions use File | Settings | File Templates.
+            //To change body of created functions use File | Settings | File Templates.
         }
 
     }
@@ -186,8 +185,8 @@ class PokemonGameActivity : FragmentActivity(), OnMapReadyCallback {
                         var listSize = pokemonList.size-1
                         for(i in 0..listSize){
                             var newPokemon = pokemonList[i]
-                            if (newPokemon.isCatch==false){
-                                val pokemonLocation = LatLng(newPokemon.lat!!, newPokemon.long!!)
+                            if (newPokemon.IsCatch==false){
+                                val pokemonLocation = LatLng(newPokemon.location!!.latitude, newPokemon.location!!.longitude)
                                 mMap!!.addMarker(MarkerOptions().position(pokemonLocation).title(newPokemon.name!!)
                                         .snippet(newPokemon.des!!)
                                         .icon(BitmapDescriptorFactory.fromResource(newPokemon.image!!)))
