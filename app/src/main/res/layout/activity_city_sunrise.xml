@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:layout_margin="10pt"
+    tools:context="eder.padilla.kotlinandroidcourse.citysunrise.CitySunriseActivity">
+
+    <EditText
+        android:id="@+id/etCityName"
+        android:layout_width="253dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="78dp"
+        android:ems="10"
+        android:background="@drawable/background"
+        android:hint="Ingresa la ciudad"
+        android:inputType="textPersonName"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSunsetTime"
+        android:layout_width="256dp"
+        android:background="@drawable/background"
+        android:layout_height="58dp"
+        android:layout_marginTop="107dp"
+        android:textSize="23sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etCityName" />
+
+    <Button
+        android:id="@+id/mButtonGetsunset"
+        android:layout_width="106dp"
+        android:layout_height="41dp"
+        android:background="@drawable/my_button_bg"
+        android:text="Button"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="88dp"
+        android:textColor="#ffffff"
+        android:onClick="getSunset"
+        app:layout_constraintTop_toBottomOf="@+id/tvSunsetTime" />
+</android.support.constraint.ConstraintLayout>
