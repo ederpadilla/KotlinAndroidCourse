@@ -13,6 +13,7 @@ import android.widget.Toast
 
 import eder.padilla.kotlinandroidcourse.R
 import eder.padilla.kotlinandroidcourse.Util
+import eder.padilla.kotlinandroidcourse.noteapp.adapter.DBManager
 import eder.padilla.kotlinandroidcourse.noteapp.adapter.NotesAdapter
 import eder.padilla.kotlinandroidcourse.noteapp.adapter.OnNoteSelected
 import eder.padilla.kotlinandroidcourse.noteapp.model.Note
@@ -28,6 +29,17 @@ class NoteActivity : AppCompatActivity() , OnNoteSelected {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
+        initBasics()
+        loadFromQuery("%")
+    }
+
+    private fun loadFromQuery(title : String) {
+        var dbManager = DBManager(this)
+        var selectionArgs = arrayOf(title)
+        val cursor = dbManager.query(null!!,"Title like ? and name like ?",selectionArgs,"Title")
+    }
+
+    private fun initBasics() {
         notesList.add(Note(1,"Eder nota 1","Hola mundo"))
         notesList.add(Note(2,"Eder nota 2","Hola mundo 2"))
         notesList.add(Note(3,"Eder nota 3","Hola mundo 3"))
@@ -35,8 +47,8 @@ class NoteActivity : AppCompatActivity() , OnNoteSelected {
         recView.setHasFixedSize(true)
         recView.adapter=notesAdapter
         notesAdapter.notifyDataSetChanged()
-
     }
+
     override fun onNoteSelected(note: Note) {
         //To change body of created functions use File | Settings | File Templates.
     }
