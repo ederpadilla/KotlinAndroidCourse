@@ -30,19 +30,37 @@ class NoteActivity : AppCompatActivity() , OnNoteSelected {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_note)
         initBasics()
-        loadFromQuery("%")
+        LoadQuery("%")
     }
 
-    private fun loadFromQuery(title : String) {
-        var dbManager = DBManager(this)
-        var selectionArgs = arrayOf(title)
-        val cursor = dbManager.query(null!!,"Title like ? and name like ?",selectionArgs,"Title")
+    fun LoadQuery(title:String){
+
+        var dbManager=DBManager(this)
+        val projections= arrayOf("ID","Title","Description")
+        val selectionArgs= arrayOf(title)
+        val cursor=dbManager.Query(projections,"Title like ?",selectionArgs,"Title")
+        notesList.clear()
+        if(cursor.moveToFirst()){
+
+            do{
+                val ID=cursor.getInt(cursor.getColumnIndex("ID"))
+                val Title=cursor.getString(cursor.getColumnIndex("Title"))
+                val Description=cursor.getString(cursor.getColumnIndex("Description"))
+
+                notesList.add(Note(ID,Title,Description))
+
+            }while (cursor.moveToNext())
+        }
+
+        notesAdapter.notifyDataSetChanged()
+
+
     }
 
     private fun initBasics() {
-        notesList.add(Note(1,"Eder nota 1","Hola mundo"))
-        notesList.add(Note(2,"Eder nota 2","Hola mundo 2"))
-        notesList.add(Note(3,"Eder nota 3","Hola mundo 3"))
+        //notesList.add(Note(1,"Eder nota 1","Hola mundo"))
+        //notesList.add(Note(2,"Eder nota 2","Hola mundo 2"))
+        //notesList.add(Note(3,"Eder nota 3","Hola mundo 3"))
         recView.layoutManager = LinearLayoutManager(this@NoteActivity, LinearLayoutManager.VERTICAL, false)
         recView.setHasFixedSize(true)
         recView.adapter=notesAdapter
@@ -62,7 +80,7 @@ class NoteActivity : AppCompatActivity() , OnNoteSelected {
         sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 Toast.makeText(applicationContext, query, Toast.LENGTH_LONG).show()
-
+                LoadQuery("% $query %")
                 return false
             }
 
@@ -73,6 +91,15 @@ class NoteActivity : AppCompatActivity() , OnNoteSelected {
 
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+
+    public fun GoToUpdate(note:Note){
+        var intent=  Intent(this,AddNoteActivity::class.java)
+        intent.putExtra("ID",note.nodeId)
+        intent.putExtra("name",note.nodeName)
+        intent.putExtra("des",note.nodeDes)
+        startActivity(intent)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {

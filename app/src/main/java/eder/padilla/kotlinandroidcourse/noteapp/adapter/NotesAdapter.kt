@@ -1,6 +1,7 @@
 package eder.padilla.kotlinandroidcourse.noteapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.view.ViewGroup
 
 import eder.padilla.kotlinandroidcourse.R
 import eder.padilla.kotlinandroidcourse.noteapp.model.Note
+import eder.padilla.kotlinandroidcourse.noteapp.ui.AddNoteActivity
+import eder.padilla.kotlinandroidcourse.noteapp.ui.NoteActivity
 import kotlinx.android.synthetic.main.ticket.view.*
 
 
@@ -51,9 +54,18 @@ class NotesAdapter(private val notesList: List<Note>, private var context: Conte
                 with(itemView) {
                     tvTitle?.text = note.nodeName
                     tvDes?.text = (note.nodeDes)
+                    ivEdit?.setOnClickListener { View.OnClickListener { GoToUpdate(note) } }
                 }
             }
         }
+        fun GoToUpdate(note:Note){
+            var intent=  Intent(context, AddNoteActivity::class.java)
+            intent.putExtra("ID",note.nodeId)
+            intent.putExtra("name",note.nodeName)
+            intent.putExtra("des",note.nodeDes)
+            context!!.startActivity(intent)
+        }
+
     }
 
 }

@@ -51,6 +51,7 @@
                 android:layout_width="40pt"
                 android:layout_height="20pt"
                 android:layout_weight="1"
+                android:onClick=""
                 app:srcCompat="@drawable/ic_mode_edit_black_24dp" />
         </LinearLayout>
 
