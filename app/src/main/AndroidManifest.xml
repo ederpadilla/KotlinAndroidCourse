@@ -11,7 +11,8 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -36,21 +37,30 @@
 
         <activity
             android:name=".pokemongame.PokemonGameTest"
-            android:label="@string/title_activity_pokemon_game_test">
-
-        </activity>
-        <activity android:name=".calculator.CalculatorActivity"></activity>
-        <activity android:name=".citysunrise.CitySunriseActivity"></activity>
-        <activity android:name=".noteapp.ui.NoteActivity">
-
-        </activity>
-        <activity android:name=".noteapp.ui.AddNoteActivity"></activity>
+            android:label="@string/title_activity_pokemon_game_test"></activity>
+        <activity android:name=".calculator.CalculatorActivity" />
+        <activity android:name=".citysunrise.CitySunriseActivity" />
+        <activity android:name=".noteapp.ui.NoteActivity"></activity>
+        <activity android:name=".noteapp.ui.AddNoteActivity" />
         <activity android:name=".mediaplayer.MediaPlayerActivity">
-            <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
+        </activity>
+        <activity android:name=".alarmmanager.AlarmActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <receiver android:name=".alarmmanager.util.MyBroadcastReceiver">
+                <intent-filter>
+                    <action android:name="com.tester.alarmmanager"/>
+                    <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                    <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                    <category android:name="android.intent.category.DEFAULT"/>
+                </intent-filter>
+
+        </receiver>
     </application>
 
 </manifest>
