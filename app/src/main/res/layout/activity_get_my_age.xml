@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="eder.padilla.kotlinandroidcourse.MainActivity">
+    tools:context="eder.padilla.kotlinandroidcourse.simplegetage.GetMyAgeActivity">
 
     <EditText
         android:id="@+id/mEtGetAge"

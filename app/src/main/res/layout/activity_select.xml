@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="eder.padilla.kotlinandroidcourse.SelectActivity">
+
+    <ScrollView
+        android:layout_width="344dp"
+        android:layout_height="495dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnAccelerometer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:onClick="goToAcelerometer"
+                android:textColor="@color/white"
+                android:background="@drawable/button_background"
+                android:text="Accelerometer" />
+            <Button
+                android:id="@+id/btnAlarmManager"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:onClick="goToAlarmManager"
+                android:background="@drawable/button_background"
+                android:text="AlarmManager" />
+            <Button
+                android:id="@+id/btnCalculator"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:onClick="goToCalculator"
+                android:background="@drawable/button_background"
+                android:text="Calculator" />
+            <Button
+                android:id="@+id/btnCitySunrise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:onClick="goToCitySunrise"
+                android:background="@drawable/button_background"
+                android:text="CitySunrise" />
+            <Button
+                android:id="@+id/btnLightsensor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:onClick="goToLightSensor"
+                android:background="@drawable/button_background"
+                android:text="Light Sensor?" />
+            <Button
+                android:id="@+id/btnMediaPlayer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:onClick="goToMediaPlayer"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/button_background"
+                android:text="Media Player" />
+            <Button
+                android:id="@+id/btnNoteApp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_marginTop="10dp"
+                android:onClick="goToNoteActivity"
+                android:background="@drawable/button_background"
+                android:text="Note App" />
+            <Button
+                android:id="@+id/btnPokemonGamen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:onClick="goToPokemon"
+                android:background="@drawable/button_background"
+                android:text="Pokemon Game" />
+            <Button
+                android:id="@+id/btnSimpleGetAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:onClick="goToGetMyAge"
+                android:background="@drawable/button_background"
+                android:text="Simple Get Age" />
+            <Button
+                android:id="@+id/btnTictacToeGame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@color/white"
+                android:onClick="goToTicTacToe"
+                android:background="@drawable/button_background"
+                android:text="Tic Tac Toe Game" />
+        </LinearLayout>
+
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
